@@ -1,0 +1,272 @@
+:root {
+  --bg: #0f1116;
+  --bg2: #161922;
+  --fg: #ffffff;
+  --accent: #1f7aff;
+  --accent2: #62a4ff;
+  --danger: #ff3b30;
+  --radius: 10px;
+  --shadow: 0 2px 6px rgba(0,0,0,0.4);
+  --font: 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.topbar {
+  background: var(--bg2);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search {
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+}
+
+.search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--fg);
+  font-size: 0.9rem;
+}
+
+.kbd {
+  background: var(--bg2);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  color: var(--accent2);
+  margin-left: 6px;
+}
+
+.btn {
+  background: var(--accent);
+  border: none;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: var(--accent2);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--accent);
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+.composer {
+  padding: 10px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: var(--bg2);
+  padding: 10px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+textarea, input[type="text"] {
+  background: var(--bg);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 8px;
+  color: var(--fg);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.notes {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+  gap: 10px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.note {
+  background: var(--bg2);
+  padding: 10px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.note h3 {
+  margin: 0 0 6px;
+}
+
+.tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.tag {
+  background: var(--accent);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.7rem;
+}
+
+.note .actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.empty {
+  text-align: center;
+  opacity: 0.6;
+  margin-top: 40px;
+}
+
+footer {
+  padding: 10px;
+  font-size: 0.8rem;
+  text-align: center;
+  opacity: 0.6;
+}
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+  /* Barra superior en columna para que no se amontonen los elementos */
+  .row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .search {
+    width: 100%;
+    padding: 6px;
+  }
+
+  .search input {
+    font-size: 0.85rem;
+  }
+
+  /* Botones más compactos y apilados si es necesario */
+  .btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  .btn.ghost {
+    flex: none;
+  }
+
+  /* Ajustar el compositor para que ocupe todo el ancho */
+  .composer {
+    padding: 8px;
+  }
+
+  .grid input,
+  .grid textarea {
+    font-size: 0.9rem;
+  }
+
+  /* Lista de notas en una sola columna */
+  .notes {
+    grid-template-columns: 1fr;
+    padding: 8px;
+  }
+
+  .note {
+    padding: 8px;
+  }
+
+  /* Etiquetas y acciones con mejor distribución en pantallas pequeñas */
+  .tags {
+    gap: 2px;
+  }
+
+  .note .actions {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  /* Footer con texto más pequeño y espaciado reducido */
+  footer {
+    font-size: 0.7rem;
+    padding: 8px;
+  }
+}
+
+/* Ajustes para tablets pequeñas */
+@media (min-width: 601px) and (max-width: 900px) {
+  .row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .notes {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .search {
+    flex: 1;
+  }
+}
